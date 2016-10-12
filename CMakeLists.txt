@@ -13,7 +13,7 @@ if(NOT DEFINED CMAKE_MACOSX_RPATH)
   set(CMAKE_MACOSX_RPATH 0)
 endif()
 
-TRIBITS_PACKAGE_DECL(minizip DISABLE_STRONG_WARNINGS)
+TRIBITS_PACKAGE(minizip DISABLE_STRONG_WARNINGS)
 
 set(MINIZIP_SRC ioapi.c
   ioapi_buf.c
@@ -34,11 +34,6 @@ if(WIN32)
   add_definitions(-D_CRT_SECURE_NO_DEPRECATE)
 endif()
 
-# create minizip library
-TRIBITS_ADD_LIBRARY(miniziplib
-    SOURCES ${MINIZIP_SRC}
-    NOINSTALLHEADERS ${MINIZIP_PUBLIC_HEADERS}
-)
 
 
 option(MINIZIP_USE_AES "enables building of aes library" ON)
@@ -77,6 +72,12 @@ if(MINIZIP_USE_AES)
   install(FILES ${AES_PUBLIC_HEADERS}
     DESTINATION "include/minizip/aes")
 endif()
+
+# create minizip library
+TRIBITS_ADD_LIBRARY(miniziplib
+    SOURCES ${MINIZIP_SRC}
+    NOINSTALLHEADERS ${MINIZIP_PUBLIC_HEADERS}
+)
 
 install(FILES ${MINIZIP_PUBLIC_HEADERS}
   DESTINATION "include/minizip")
