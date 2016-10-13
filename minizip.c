@@ -65,7 +65,7 @@
 #endif
 
 #define WRITEBUFFERSIZE (16384)
-#define MAXFILENAME     (256)
+#define MAXFILENAME     (1024)
 
 uLong filetime(const char *filename, tm_zip *tmzip, uLong *dostime)
 {
