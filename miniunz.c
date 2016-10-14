@@ -67,7 +67,7 @@
 #include "unzip.h"
 
 #define WRITEBUFFERSIZE (8192)
-#define MAXFILENAME     (256)
+#define MAXFILENAME     (1024)
 
 #ifdef _WIN32
 #  define USEWIN32IOAPI
